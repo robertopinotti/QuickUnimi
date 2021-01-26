@@ -1,0 +1,20 @@
+{
+  "name": "QuickUnimi",
+  "short_name": "QuickUnimi",
+  "icons": [
+    {
+      "src": "images/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "theme_color": "#0dcaf0",
+  "background_color": "#121212",
+  "display": "standalone"
+}
