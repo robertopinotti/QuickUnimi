@@ -16,7 +16,8 @@ self.addEventListener('install', function(e) {
         'images/icon-512x512.png',
         'images/quickunimi-app.png',
         'images/quickunimi-cover.png',
-        'images/quickunimi-ico.png'
+        'images/quickunimi-ico.png',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'
     ]);
    })
  );
