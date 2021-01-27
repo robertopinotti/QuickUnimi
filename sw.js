@@ -20,6 +20,26 @@ self.addEventListener('install', function(e) {
  );
 });
 
+// ACTIVATE
+
+self.addEventListener('activate', function(e) {
+    
+    console.log('[ServiceWorker] Activate');
+
+    e.waitUntil(
+        caches.keys().then((keyList) => {
+            return Promise.all(keyList.map((key) => {
+                if (key !== 'quickunimi-cache') {
+                    console.log('[ServiceWorker] Removing old cache', key);
+                    return caches.delete(key);
+                }
+            }));
+        })
+    );
+
+    self.clients.claim(); // ?
+});
+
 // FETCH
 
 self.addEventListener('fetch', function(e) {
