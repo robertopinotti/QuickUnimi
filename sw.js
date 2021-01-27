@@ -1,3 +1,5 @@
+// INFO https://nariohtools.com/sw.js
+
 // INSTALL
 
 self.addEventListener('install', function(e) {
