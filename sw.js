@@ -51,6 +51,9 @@ self.addEventListener('fetch', function(e) {
 
     caches.open('quickunimi-cache').then(function(cache) {
 
+      // https://stackoverflow.com/questions/48463483/what-causes-a-failed-to-execute-fetch-on-serviceworkerglobalscope-only-if
+      if (e.request.cache === 'only-if-cached' && e.request.mode !== 'same-origin') return;
+
       return cache.match(e.request).then(
         cacheResponse => cacheResponse || fetch(e.request).then(
           networkResponse => {
