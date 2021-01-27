@@ -26,7 +26,7 @@ self.addEventListener('fetch', function(e) {
     caches.open('quickunimi-cache').then(function(cache) {
 
       return cache.match(e.request).then(
-        cacheResponse => cacheResponse || fetch(evt.request).then(
+        cacheResponse => cacheResponse || fetch(e.request).then(
           networkResponse => {
             cache.put(e.request, networkResponse.clone());
             return networkResponse;
