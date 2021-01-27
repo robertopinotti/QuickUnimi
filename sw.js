@@ -8,7 +8,13 @@ self.addEventListener('install', function(e) {
         'index.html',
         'manifest.json',
         'sw.js',
-        'service-worker.js'
+        'service-worker.js',
+        'images/base.png',
+        'images/icon-144x144.png',
+        'images/icon-512x512.png',
+        'images/quickunimi-app.png',
+        'images/quickunimi-cover.png',
+        'images/quickunimi-ico.png'
     ]);
    })
  );
