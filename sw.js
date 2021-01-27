@@ -40,7 +40,7 @@ self.addEventListener('activate', function(e) {
         })
     );
 
-    self.clients.claim(); // ?
+    // self.clients.claim();
 });
 
 // FETCH
