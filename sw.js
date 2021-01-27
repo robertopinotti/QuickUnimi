@@ -1,4 +1,5 @@
-// INFO https://nariohtools.com/sw.js
+// https://nariohtools.com/sw.js
+// https://jakearchibald.com/2014/offline-cookbook/#network-falling-back-to-cache
 
 // INSTALL
 
