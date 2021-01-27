@@ -15,7 +15,7 @@ self.addEventListener('fetch', function(e) {
   
   e.respondWith(
 
-    cache.open('quickunimi-cache').then(cache => {
+    caches.open('quickunimi-cache').then(cache => {
 
       return cache.match(e.request).then(
         cacheResponse => cacheResponse || fetch(evt.request).then(
