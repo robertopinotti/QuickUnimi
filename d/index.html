@@ -10,7 +10,8 @@
 
 	<style type="text/css">
         body {
-        	padding-top: 50px;
+        	padding-top: 20px;
+        	padding-bottom: 20px;
           background-color: #121212;
           color: #0dcaf0;
         }
@@ -24,7 +25,7 @@
 		function premi(){
 			nome_file=document.getElementById('nome_file').value;
 			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file;
-			document.getElementById('url_id').innerHTML = "<h2>Punto 4</h2><p>Ecco il link magico: </p><a href='"+url+"'>"+url+"</a>";
+			document.getElementById('url_id').innerHTML = "<br/><h2>Punto 4</h2><p>Ecco il link magico: </p><a href='"+url+"'>"+url+"</a>";
 			return false;
 		}
 		
