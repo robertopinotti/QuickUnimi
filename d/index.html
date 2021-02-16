@@ -23,7 +23,7 @@
 
 		function premi(){
 			nome_file=document.getElementById('nome_file').value;
-			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file+".mp4";
+			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file;
 			document.getElementById('url_id').innerHTML = "<h2>Punto 4</h2><p>Ecco il link magico: </p><a href='"+url+"'>"+url+"</a>";
 			return false;
 		}
@@ -50,7 +50,7 @@
 	<p>Inserisci il nome del file qui dentro e premi invio.</p>
 
 	<form onsubmit="return premi()">
-		<input type="text" id="nome_file" name="nome_file">
+		<input type="text" id="nome_file" name="nome_file" value="ppd-2020-10-27-2.mp4">
 		<input type="submit" value="Invia">
 	</form>
 
