@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="it">
 <head>
-	
+
 	<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>⬇️</title>
@@ -9,7 +9,12 @@
 	<script type="text/javascript">
 
 		function premi(){
-			alert("premuto")
+			//alert("premuto")
+			nome_file=document.getElementById('nome_file').value;
+			//alert(nome_file)
+			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file+".mp4";
+			//alert(url);
+			window.location.replace(url);
 		}
 		
 	</script>
@@ -23,7 +28,7 @@
 	<p>Inserisci il nome del file qui dentro e premi invio. Verrai mandato alla pagina del file.</p>
 	<form>
 		<input type="text" id="nome_file" name="nome_file">
-		<input type="submit" value="Invia" onclick="premi">
+		<input type="submit" value="Invia" onclick="premi()">
 	</form>
 
 </body>
