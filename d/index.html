@@ -13,8 +13,10 @@
 			nome_file=document.getElementById('nome_file').value;
 			//alert(nome_file)
 			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file+".mp4";
-			alert(url);
-			window.location.replace("https://google.it");
+			//alert(url);
+			//window.location = "https://google.it";
+			document.getElementById('url_id').innerHTML = "<a href='"+url+"'>"+url+"</a>";
+
 		}
 		
 	</script>
@@ -30,6 +32,7 @@
 		<input type="text" id="nome_file" name="nome_file">
 		<input type="submit" value="Invia" onclick="premi()">
 	</form>
+	<p id="url_id"></p>
 
 </body>
 </html>
