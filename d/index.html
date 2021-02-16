@@ -4,6 +4,7 @@
 
 	<meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>⬇️</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
@@ -21,14 +22,9 @@
 	<script type="text/javascript">
 
 		function premi(){
-			//alert("premuto")
 			nome_file=document.getElementById('nome_file').value;
-			//alert(nome_file)
 			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file+".mp4";
-			alert(url);
-			//window.location = "https://google.it";
 			document.getElementById('url_id').innerHTML = "<a href='"+url+"'>"+url+"</a>";
-			window.location.href = "../";
 			return false;
 		}
 		
@@ -53,11 +49,9 @@
 	<h2>Punto 3</h2>
 	<p>Inserisci il nome del file qui dentro e premi invio. Verrai mandato alla pagina del file.</p>
 
-	<form>
-		<div class="form-group">
+	<form onsubmit="return premi()">
 		<input type="text" id="nome_file" name="nome_file">
-		<input type="submit" value="Invia" onclick="premi()">
-		</div>
+		<input type="submit" value="Invia">
 	</form>
 
 	<p id="url_id"></p>
