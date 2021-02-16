@@ -24,7 +24,7 @@
 		function premi(){
 			nome_file=document.getElementById('nome_file').value;
 			url="https://videolezioni.unimi.it/video-lezioni/"+nome_file+".mp4";
-			document.getElementById('url_id').innerHTML = "<a href='"+url+"'>"+url+"</a>";
+			document.getElementById('url_id').innerHTML = "<h2>Punto 4</h2><p>Ecco il link magico: </p><a href='"+url+"'>"+url+"</a>";
 			return false;
 		}
 		
@@ -44,10 +44,10 @@
 	<p>Vai nella pagina di Ariel della videolezione.<br/> Premi sul video con il tasto destro. <br/>Fai <em>Ispeziona elemento</em>. <br/>Copia l'url.<br/><br/> Esempio di url: <code>https://videolectures.unimi.it/vod/mp4:ppd-2020-10-27-2.mp4/manifest.m3u8</code></p>
 
 	<h2>Punto 2</h2>
-	<p>Dall'url che hai copiato, estrai il nome del file compreso tra <code>mp4:</code> e <code>/manifest</code>.<br/> <br/>Esempio: <br/><code>https://videolectures.unimi.it/vod/mp4:<span id="bg">ppd-2020-10-27-2.mp4</span>/manifest.m3u8</code><br/></p>
+	<p>Dall'url che hai copiato, estrai il nome del file. <br/> <br/>Esempio: <br/><code>https://videolectures.unimi.it/vod/mp4:<span id="bg">ppd-2020-10-27-2</span>.mp4/manifest.m3u8</code><br/></p>
 	
 	<h2>Punto 3</h2>
-	<p>Inserisci il nome del file qui dentro e premi invio. Verrai mandato alla pagina del file.</p>
+	<p>Inserisci il nome del file qui dentro e premi invio.</p>
 
 	<form onsubmit="return premi()">
 		<input type="text" id="nome_file" name="nome_file">
