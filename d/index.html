@@ -18,6 +18,8 @@
         #bg{
         	background-color: #0dcaf0;
         }
+        /*dekstop*/
+        @media screen and ( min-width: 768px ) { #nascosto{ display: none } }
     </style>
 
 	<script type="text/javascript">
@@ -41,7 +43,9 @@
 	
 	<h1>Come scaricare le video lezioni da Ariel</h1>
 	<hr>
+
 	<h2>Punto 1</h2>
+	<span id="nascosto" class="badge bg-warning text-dark">Meglio usare un computer per questo passaggio :)</span>
 	<p>Vai nella pagina di Ariel con le videolezioni.<br/> Premi con il tasto destro sul video che vuoi scaricare. <br/>Fai <em>Ispeziona elemento</em>. <br/>Copia l'url.<br/><br/> Esempio di url: <code>https://videolectures.unimi.it/vod/mp4:ppd-2020-10-27-2.mp4/manifest.m3u8</code></p>
 
 	<h2>Punto 2</h2>
@@ -51,7 +55,7 @@
 	<p>Inserisci il nome del file qui dentro e premi invio.</p>
 
 	<form onsubmit="return premi()">
-		<input type="text" id="nome_file" name="nome_file" placeholder="ppd-2020-10-27-2">
+		<input type="text" id="nome_file" name="nome_file" placeholder="ppd-2020-10-27-2" required>
 		<input type="submit" value="Invia">
 	</form>
 
