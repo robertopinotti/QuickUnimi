@@ -2,12 +2,12 @@
 <html class="no-js" lang="it">
 <head>
 
-	<!-- META TAGS //////////// -->
+    <!-- META TAGS //////////// -->
 
-	<meta charset="utf-8">
-  	<meta http-equiv="x-ua-compatible" content="ie=edge">
-  	<title>Ariel Download</title>
-  	<meta name="description" content="Come scaricare i video da Ariel.">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ariel Download</title>
+    <meta name="description" content="Come scaricare i video da Ariel.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../images/quickunimi-ico.png">
 
@@ -26,88 +26,197 @@
 
     <!-- FACEBOOK //////////// -->
 
-	<meta property="og:url" content="http://www.quickunimi.it/d">
-	<meta property="og:title" content="Ariel Download">
-	<meta property="og:description" content="Come scaricare i video da Ariel.">
-	<meta property="og:type" content="website">
-	<meta property="og:image" content="../images/quickunimi-cover.png"/>
-	<meta property="og:image:type" content="image/png">
-	<meta property="og:image:width" content="900">
-	<meta property="og:image:height" content="472">
+    <meta property="og:url" content="http://www.quickunimi.it/d">
+    <meta property="og:title" content="Ariel Download">
+    <meta property="og:description" content="Come scaricare i video da Ariel.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../images/quickunimi-cover.png"/>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="900">
+    <meta property="og:image:height" content="472">
 
     <!-- BOOTSTRAP //////////// -->
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-	<!-- CSS //////////// -->
+    <!-- CSS //////////// -->
 
-	<style type="text/css">
+    <style type="text/css">
         body {
-        	padding-top: 20px;
-        	padding-bottom: 20px;
-          	background-color: #121212;
-          	color: #0dcaf0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #121212;
+            color: #0dcaf0;
         }
-        #bg{
-        	background-color: #0dcaf0;
+
+        #bg {
+            background-color: #0dcaf0;
         }
+
+        .videoInsert {
+            width: 100%;
+            height: 100%;
+        }
+
         /*dekstop*/
-        @media screen and ( min-width: 768px ) { #nascosto{ display: none } }
+        @media screen and ( min-width: 768px ) {
+            #nascosto {
+                display: none
+            }
+        }
+
         a {
-        	text-decoration: none;
+            text-decoration: none;
         }
     </style>
 
     <!-- JAVASCRIPT //////////// -->
 
-	<script type="text/javascript">
-
-		function premi() {
-			var nome_file = document.getElementById('nome_file').value;
 
 
-			var res = nome_file.split("/", 5);
-			var res2 = res[res.length - 1].split("mp4:");
+    <script>
+        async function downloadVideo() {
+
+            const url = document.getElementsByTagName("source")[0].src
+            return await fetch(url, {
+                method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                mode: 'no-cors', // no-cors, *cors, same-origin
+                headers: {
+                    'Content-Type': 'application/octet-stream'
+                }
+            })
+
+        }
+
+        async function onDownloadVideo() {
+            const x = await downloadVideo()
+            console.log(x)
+        }
+
+            /*            return fetch(url,
+                            {
+                                method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                                mode: 'no-cors', // no-cors, *cors, same-origin
+                                headers: {
+                                    'Content-Type': 'application/octet-stream'
+                                }
+                            }
+                        )
+                            .then(response => response.blob())
+                            .then(blob => {
+                                console.log(blob)
+                                var url = window.URL.createObjectURL(url);
+                                var a = document.createElement('a');
+                                a.href = url;
+                                document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+                                a.click();
+                                document.body.removeChild(a);  //afterwards we remove the element again
+                            })
+                            .catch(err => {
+                            console.log(err)
+                        })*/
 
 
-			url = "https://videolezioni.unimi.it/video-lezioni/" + res2[1];
-			document.getElementById('url_id').innerHTML = "<h2>Punto 3</h2><p>Ecco il link magico: <a target='_blank' href='" + url + "'>" + url + "</a></p>";
-			return false;
-		}
+        function embedVideo(downloadUrl) {
+            document.getElementById('video_id').innerHTML = "<video class=\"videoInsert\" controls=\"\" name=\"media\">\n" +
+                "                                    <source src=" + downloadUrl + " type=\"video/mp4\">\n" +
+                "                                </video>"
+        }
+    </script>
 
-	</script>
+    <script type="text/javascript">
+
+        function premi() {
+            var nome_file = document.getElementById('nome_file').value;
+
+
+            var res = nome_file.split("/", 5);
+            var res2 = res[res.length - 1].split("mp4:");
+
+
+            url = "https://videolezioni.unimi.it/video-lezioni/" + res2[1];
+
+            document.getElementById('url_id').innerHTML = "" +
+                "<h2>Punto 3</h2><p>Ecco il link magico: <a target='_blank' href='"
+
+                + url + "'>" + url + "</a> " +
+                "<button onclick='onDownloadVideo();' class=\"btn btn-info\" id=\"download\">Scarica <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-stars\" viewBox=\"0 0 16 16\"><path d=\"M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z\"/></svg></button>" +
+                "</p>";
+            embedVideo(url)
+            let v = document.getElementById("download");
+            v.addEventListener("click", event => {
+                event.preventDefault();
+                console.log("Download");
+                dow();
+            });
+
+            return false;
+        }
+
+    </script>
 
 </head>
 <body>
 
-	<div class="container">
-	<div class="row">
-	<div class="col-sm-9">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
 
-	<a class="badge bg-light text-dark" href="../"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/></svg> torna a QuickUnimi</a>
-	<br/><br/>
-	<h1>Come scaricare i video da Ariel</h1>
-	<hr>
+            <a class="badge bg-light text-dark" href="../">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                torna a QuickUnimi</a>
+            <br/><br/>
+            <h1>Come scaricare i video da Ariel</h1>
+            <hr>
 
-	<h2>Punto 1</h2>
-	<span id="nascosto" class="badge bg-warning text-dark">Meglio usare un computer per questo passaggio</span>
-	<p>Vai nella pagina di Ariel con i video.<br/> Premi con il tasto destro sul video che vuoi scaricare. <br/>Fai <em>Ispeziona elemento</em>. <br/>Copia l'url.<br/><br/> Esempio di url: <code>https://videolectures.unimi.it/vod/mp4:ppd-2020-10-27-2.mp4/manifest.m3u8</code></p>
-	
-	<h2>Punto 2</h2>
-	<p>Inserisci qui sotto l'url che hai copiato. Quindi premi invio.</p>
+            <h2>Punto 1</h2>
+            <span id="nascosto" class="badge bg-warning text-dark">Meglio usare un computer per questo passaggio</span>
+            <p>Vai nella pagina di Ariel con i video.<br/> Premi con il tasto destro sul video che vuoi scaricare. <br/>Fai
+                <em>Ispeziona elemento</em>. <br/>Copia l'url.<br/><br/> Esempio di url: <code>https://videolectures.unimi.it/vod/mp4:ppd-2020-10-27-2.mp4/manifest.m3u8</code>
+            </p>
 
-	<form onsubmit="return premi()">
-		<div class="input-group mb-3">
-		<input class="form-control" type="text" id="nome_file" name="nome_file" placeholder="https://videolectures.unimi.it/vod/mp4:ppd-2020-10-27-2.mp4/manifest.m3u8" aria-label="bottone" required>
-		<button class="btn btn-info" id="bottone" type="submit">Fai la magia <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg></button>
-		</div>
-	</form>
+            <h2>Punto 2</h2>
+            <p>Inserisci qui sotto l'url che hai copiato. Quindi premi invio.</p>
 
-	<p id="url_id"></p>
+            <form onsubmit="return premi()">
+                <div class="input-group mb-3">
+                    <input class="form-control" type="text" id="nome_file" name="nome_file"
+                           placeholder="https://videolectures.unimi.it/vod/mp4:ppd-2020-10-27-2.mp4/manifest.m3u8"
+                           aria-label="bottone" required>
+                    <button class="btn btn-info" id="bottone" type="submit">Fai la magia
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-stars" viewBox="0 0 16 16">
+                            <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
 
-	</div>
-	</div>
-	</div>
+            <p id="url_id"></p>
+            <div class="row">
+                <div id="video_id" class="col-sm-12 wrapper">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function dow() {
+        let v = document.getElementById("video_id");
+        v.onmousedown(event => {
+            if (event.button === 2) {
+                console.log("Right button");
+            }
+        });
+    }
+
+</script>
 
 </body>
 </html>
