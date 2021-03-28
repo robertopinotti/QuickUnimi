@@ -73,32 +73,31 @@
 
     <!-- JAVASCRIPT //////////// -->
 
-    <script>
-        function embedVideo(downloadUrl) {
-            document.getElementById('video_id').innerHTML = "<video class=\"videoInsert\" controls=\"\" name=\"media\">\n" +
-                "                                    <source src=" + downloadUrl + " type=\"video/mp4\">\n" +
-                "                                </video>"
-        }
-    </script>
-
     <script type="text/javascript">
 
+        function embedVideo(downloadUrl) {
+            
+            document.getElementById('video_id').innerHTML =
+            "<video class=\"videoInsert\" controls=\"\" name=\"media\">\n"
+            + "<source src="
+            + downloadUrl
+            + " type=\"video/mp4\">\n"
+            + "</video";
+        }
+
         function premi() {
+
             var nome_file = document.getElementById('nome_file').value;
-
-
             var res = nome_file.split("/", 5);
             var res2 = res[res.length - 1].split("mp4:");
 
-
             url = "https://videolezioni.unimi.it/video-lezioni/" + res2[1];
 
-            document.getElementById('url_id').innerHTML = "" +
-                "<h2>Punto 3</h2>" +
-                /*"<p>Ecco il link magico: <a target='_blank' href='"
-                + url + "'>" + url + "</a> " +*/
-                "<p>Ecco il video: per scaricarlo, clicca col tasto destro sul video e poi seleziona <em>Salva video come...</em>" +
-                "</p>";
+            document.getElementById('url_id').innerHTML = ""
+                + "<h2>Punto 3</h2>"
+                + "<p>Ecco il video: per scaricarlo, clicca col tasto destro sul video e poi seleziona <em>Salva video come...</em>"
+                + "</p>";
+
             embedVideo(url)
             return false;
         }
