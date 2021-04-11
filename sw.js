@@ -3,6 +3,8 @@
 
 // INSTALL
 
+/*
+
 self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('quickunimi-cache').then(function(cache) {
@@ -72,3 +74,5 @@ self.addEventListener('fetch', function(e) {
   ) // e.respondWith
 
 }); // self
+
+*/
